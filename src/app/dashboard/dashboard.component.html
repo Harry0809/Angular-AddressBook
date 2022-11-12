@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+        <div class="contact-detail-text">
+            Person Details 
+        </div>  
+        <button mat-button (click) = "btnClick()">
+            <mat-icon>add</mat-icon>
+            Add user
+        </button>
+    </div>
+    <div class="table-main">
+        <table class="table" id="display">
+            <tr>
+                <th class="table-name-column"> Name </th>
+                <th class="table-address-column"> Address </th>
+                <th class="table-city-column"> City </th>
+                <th class="table-state-column"> State </th>
+                <th class="table-zipCode-column"> Zip Code </th>
+                <th class="table-phoneNumber-column">  Phone Number</th>
+                <th class="tb-header-actions"></th>
+            </tr>
+            
+            
+            <tr *ngFor="let contact of allcontactList">
+                <td class="table-name-column"> {{contact.Name}} </td>
+                <td class="table-address-column"> {{contact.address}} </td>
+                <td class="table-city-column"> {{contact.city}} </td>
+                <td class="table-state-column"> {{contact.state}} </td>
+                <td class="table-zipCode-column"> {{contact.zip}} </td>
+                <td class="table-phoneNumber-column"> {{contact.phoneNumber}} </td>
+                <td class="action-icon tb-header-actions" >
+                    <mat-icon class="delete-icon" (click)="deleteContactByID(contact.id)">delete</mat-icon>
+                    <mat-icon class="edit-icon" (click)="editById(contact.id)">edit</mat-icon>
+                </td> 
+            </tr>
+            
+        </table>
+    </div>
+</div>

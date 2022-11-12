@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="main-formContent">
+    <form [formGroup]="addContact" (ngSubmit)="addContactDetails()">
+        <header>
+            <div class="header-text">
+            PERSON ADDRESS FORM
+            </div>
+            <mat-icon (click)="cancel()">cancel</mat-icon>
+        </header>
+        <div class="input-field">
+            <div class="text-field">
+                <label for="Name">Name</label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Name" name="Name" formControlName="Name">
+                </mat-form-field>
+            </div>
+            <div class="text-field">
+                <label for="phoneNumber">Phone Number</label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter phone number" name="phoneNumber" formControlName="phoneNumber">
+                </mat-form-field>
+            </div>
+            
+            <div class="add-field">
+                <label for="address">Address</label>
+                <mat-form-field appearance="outline">
+                    <textarea matInput name="address" formControlName="address"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="city-state-zip">
+                <div class="commonAddField">
+                    <label for="city">City</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="city">
+                          <mat-option *ngFor="let city of cities" [value]="city">
+                            {{city}}
+                          </mat-option>5
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="commonAddField">
+                    <label for="state">State</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="state">
+                          <mat-option *ngFor="let state of states" [value]="state.name">
+                            {{state.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="commonAddField">
+                    <label for="zipCode">Zip Code</label>
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Enter City" name="zip" formControlName="zip">
+                    </mat-form-field> 
+                </div>
+                
+            </div>
+            <div class="button">
+                <button type="submit" class="submitButton" *ngIf="this.Id==null" [disabled]="!addContact.valid" >Add</button>        
+                <button class="submitButton" *ngIf="this.Id!=null" (click)="updateContact()">Update</button>
+                <button type="reset" class="resetButton">Reset</button>
+            </div>
+
+        </div>
+    </form>
+</div>
